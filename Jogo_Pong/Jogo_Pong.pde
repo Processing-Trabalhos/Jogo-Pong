@@ -27,7 +27,7 @@ boolean menu(){
   image(play, width/2 - 60, 550, 170, 170);
   
   //Apertar o botão play
-  if(pmouseX > width/2 - 60 && pmouseX < width/2 + 110 && pmouseY > 550 && pmouseY < 720){
+  if(mouseX > width/2 - 60 && mouseX < width/2 + 110 && mouseY > 550 && mouseY < 720 && mousePressed){
     return false;
   }else{
     return true;
