@@ -18,6 +18,12 @@ public class Barra{
   
   void movimentar(int velocidade){
     posicao.x += velocidade;
+    if(posicao.x > width - tamanho.x){
+      posicao.x = width - tamanho.x;
+    }
+    if(posicao.x < 0){
+      posicao.x = 0;
+    }
   }
   
   void desenhar(){

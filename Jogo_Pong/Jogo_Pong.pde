@@ -1,8 +1,6 @@
 PImage pong_nome, play;
 Boolean menu_ativo = true;
 Mapa mapa;
-Bola bola;
-Barra barra;
 int corDoMenu = 0;
 
 void setup(){
@@ -10,8 +8,6 @@ void setup(){
   frameRate(60);
   
   mapa = new Mapa();
-  bola = new Bola();
-  barra = new Barra();
 }
 
 void draw(){
@@ -21,9 +17,6 @@ void draw(){
   
   if(!menu_ativo){
     mapa.desenha();
-    bola.desenhar();
-    bola.movimentar();
-    barra.desenhar();
   }
 }
 
@@ -36,15 +29,15 @@ void mousePressed(){
 }
 
 void keyPressed(){
-  if (keyCode == RIGHT) {
-    barra.movimentar(10);
-  }
-  if (keyCode == LEFT) {
-    barra.movimentar(-10);
-  }
+    if (keyCode == RIGHT) {
+      mapa.barra.movimentar(40);
+    }
+    if (keyCode == LEFT) {
+      mapa.barra.movimentar(-40);
+    }
 }
-
-boolean menu(){
+  
+void menu(){
   frameRate(3);
   
   //Cores de fundo
