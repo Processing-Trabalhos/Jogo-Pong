@@ -1,22 +1,59 @@
 PImage pong_nome, play;
 Boolean menu_ativo = true;
+Mapa mapa;
+Bola bola;
+Barra barra;
+int corDoMenu = 0;
 
 void setup(){
   size(1500, 800);
-  frameRate(30);
+  frameRate(60);
+  
+  mapa = new Mapa();
+  bola = new Bola();
+  barra = new Barra();
 }
 
 void draw(){
-  if(menu_ativo) menu_ativo = menu(); //Menu do jogo
-  if (!menu_ativo) mapa(); //Função que desenha o mapa
+  if(menu_ativo){
+    menu(); //Menu do jogo
+  }
+  
+  if(!menu_ativo){
+    mapa.desenha();
+    bola.desenhar();
+    bola.movimentar();
+    barra.desenhar();
+  }
+}
+
+void mousePressed(){
+    //Apertar o botão play
+  if(mouseX > width/2 - 60 && mouseX < width/2 + 110 && mouseY > 550 && mouseY < 720){
+    menu_ativo = false;
+    frameRate(60);
+  }
+}
+
+void keyPressed(){
+  if (keyCode == RIGHT) {
+    barra.movimentar(10);
+  }
+  if (keyCode == LEFT) {
+    barra.movimentar(-10);
+  }
 }
 
 boolean menu(){
-  frameRate(1);
+  frameRate(3);
   
   //Cores de fundo
   color[] cores = {#dc0030, #008ac9, #c2b600, #57378a};
-  background(cores[int(random(cores.length))]);
+  background(cores[corDoMenu]);
+  corDoMenu++;
+  if(corDoMenu == 4){
+    corDoMenu = 0;
+  }
   
   //Imagem do nome do jogo
   pong_nome = loadImage("pong_nome.png"); 
@@ -25,28 +62,4 @@ boolean menu(){
   //Botão de play
   play = loadImage("play.png");
   image(play, width/2 - 60, 550, 170, 170);
-  
-  //Apertar o botão play
-  if(mouseX > width/2 - 60 && mouseX < width/2 + 110 && mouseY > 550 && mouseY < 720 && mousePressed){
-    return false;
-  }else{
-    return true;
-  }
-}
-
-void mapa(){
-  clear();
-  background(0);
-  stroke(255);
-  
-  //Topo e Base
-  line(width - 1400, 50, width - 100,  50);
-  line(width - 1400, 750, width - 100, 750);
-  
-  //Laterais
-  line(width - 1400, 50, width - 1400, 750);
-  line(width - 100,  50, width - 100, 750);
-  
-  //Divisória
-  line(width/2, 50, width/2, 750);
 }
