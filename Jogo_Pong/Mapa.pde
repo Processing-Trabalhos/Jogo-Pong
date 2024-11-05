@@ -2,6 +2,7 @@ public class Mapa{
   Bola bola;
   Barra barra;
   boolean estaViva;
+  int pontuacao;
   
   public Mapa(){
     this.bola = new Bola();
@@ -17,12 +18,14 @@ public class Mapa{
     bola.movimentar();
     barra.desenhar();
     vidaDaBola();
+    mostraPontuacao();
   }
   
   void vidaDaBola(){
       if(bola.posicao.x >= barra.posicao.x && bola.posicao.x <= (barra.posicao.x + barra.tamanho.x)){
         if(bola.posicao.y >= barra.posicao.y && bola.posicao.y <= (barra.posicao.y + barra.tamanho.y)){
           bola.velocidade.y *= -1;
+          pontuacao++;
         } 
       }
       
@@ -33,5 +36,11 @@ public class Mapa{
         bola.posicao.y = 50;
         bola.defineVelocidade();
       }
+  }
+  
+  void mostraPontuacao(){
+    fill(255);
+    textSize(50);
+    text(pontuacao, 30, 60);
   }
 }
