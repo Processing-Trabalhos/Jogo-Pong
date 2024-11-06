@@ -1,6 +1,6 @@
 public class Barra{
   
-  color cor = color(255);
+  color cor;
   PVector tamanho;
   PVector posicao;
   
@@ -26,7 +26,9 @@ public class Barra{
     }
   }
   
-  void desenhar(){
+  void desenhar(color cor){
+    //Cores de fundo
+    noStroke();
     fill(cor);
     rect(posicao.x, posicao.y, tamanho.x, tamanho.y);
   }

@@ -1,7 +1,7 @@
 public class Bola {
 
   int tamanho = 20;
-  color cor = color(255);
+  color cor;
   PVector posicao;
   PVector velocidade;
   
@@ -30,14 +30,15 @@ public class Bola {
     
   }
   
-  void desenhar(){
+  void desenhar(color cor){
+    noStroke();
     fill(cor);
     ellipse(posicao.x, posicao.y, tamanho, tamanho);
   }
   
   void defineVelocidade(){
-    velocidade.x = random(5, 5);
-    velocidade.y = random(5, 5);
+    velocidade.y = random(5, 11);
+    velocidade.x = random(1, 7);
     
     int direcao = random(1) > 0.5 ? 1 : -1;
     
