@@ -5,7 +5,7 @@ public class Bola {
   PVector posicao;
   PVector velocidade;
   
-  public Bola(){
+  Bola(){
     posicao = new PVector();
     velocidade = new PVector();
     
@@ -33,7 +33,7 @@ public class Bola {
   void desenhar(color cor){
     noStroke();
     fill(cor);
-    ellipse(posicao.x, posicao.y, tamanho, tamanho);
+    circle(posicao.x, posicao.y, tamanho);
   }
   
   void defineVelocidade(){

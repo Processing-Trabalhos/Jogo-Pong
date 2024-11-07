@@ -27,15 +27,6 @@ void mousePressed(){
     frameRate(60);
   }
 }
-
-void keyPressed(){
-    if (keyCode == RIGHT) {
-      mapa.barra.movimentar(40);
-    }
-    if (keyCode == LEFT) {
-      mapa.barra.movimentar(-40);
-    }
-}
   
 void menu(){
   frameRate(3);
