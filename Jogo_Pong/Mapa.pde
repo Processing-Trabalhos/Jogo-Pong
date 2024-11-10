@@ -55,6 +55,8 @@ public class Mapa{
         quadroUltimaAcao = 0;
         estadoUltimaAcao = obterEstado();
         ultimaAcao = 0;
+      }else{
+        estaViva = true;
       }
   }
   
@@ -66,12 +68,21 @@ public class Mapa{
   
   void atualizarQLearning(){
     quadroAtual++;
+    float recompensa;
     
     // Ação do RL
     if (quadroAtual - quadroUltimaAcao >= 5) {
       
       // Atualizar valor Q após a ação
-      float recompensa = estaViva ? 1 : - 100;
+      if(estaViva){
+        recompensa = 1;
+      }else{
+        float compara = barra.posicao.x - bola.posicao.x;
+        float porcentagem = compara / width;
+        
+        recompensa = -100 * abs(porcentagem);
+      }
+      
       String estadoAtual = obterEstado();
       agente.atualizarValorQ(estadoUltimaAcao, ultimaAcao, recompensa, estadoAtual);
       

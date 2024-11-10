@@ -1,13 +1,16 @@
 PImage pong_nome, play;
 Boolean menu_ativo = true;
 Mapa mapa;
-int corDoMenu = 0;
+int corDoMenu = 0, corAux;
+float aux = 0.6;
+color[] cores = {#dc0030, #008ac9, #c2b600, #57378a};
 
 void setup(){
   size(1500, 800);
   frameRate(60);
   
   mapa = new Mapa();
+  
 }
 
 void draw(){
